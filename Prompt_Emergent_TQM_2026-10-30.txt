@@ -1,0 +1,11 @@
+Continuă aplicația TQM Achiziții existentă, fără reconstrucție și fără schimbarea stackului ori a designului general. Citește PDF-ul „Cerințe pentru Emergent”, versiunea 30.10.2026, și Excelul „Intend_TQM_Services OIP.xlsx”. Notițele tăiate despre editarea cererilor/stărilor sunt confirmate ca rezolvate; verifică-le doar la regresie.
+
+Implementează R01–R09: Sursă/Observații vizibile și persistente; invitații din Cereri de ofertă prin aceeași logică COF; mai multe oferte/configurații pentru același furnizor; matrice comparativă material × ofertă/variantă; alegerea manuală a oricărei oferte eligibile; configurații cu componente, licențe și servicii, fără reducere inventată pentru accesorii gratuite; facturi cu mod de introducere net/brut și regim TVA distinct; facturi directe fără documente fictive; asociere/repartizare pe proiecte fără dublarea valorilor.
+
+Inspectează mai întâi modelele, endpointurile și componentele actuale. Prezintă pe scurt maparea cerințelor și fișierele afectate, apoi implementează în loturile B01–B06. Cere clarificare numai pentru ambiguități care schimbă efectiv prețul, eligibilitatea ori datele; nu opri lucrul pentru alegeri de implementare de rutină.
+
+În Excel sunt două configurații alternative ale aceluiași produs, cu suport pe 12/36 luni, linii la preț zero și o licență tarifată păstrată în totalurile „fără servicii”. Citește valorile din fișier și reconciliază I26/I27/I41/I42. Sursa este o estimare în USD, iar regimul TVA nu este precizat. Nu inventa prețuri, taxe, echivalențe, valabilitate ori confirmări comerciale.
+
+Păstrează ofertele originale și snapshoturile comenzilor aprobate. Selecția manuală nu ocolește cantitățile disponibile, condițiile de pachet, validările tehnice și versiunile. Factura directă nu produce automat necesar, comandă, recepție ori stoc. Folosește aceleași calcule și reguli pe server și în toate ecranele.
+
+Livrează frontend și backend funcționale, migrații compatibile și testele E01–E36 relevante, cu rezultate reale. Nu șterge/resetă datele existente și nu publica automat schimbările. Raportează cerințele realizate, fișierele schimbate, testele executate, limitele și pașii de verificare în browser.
