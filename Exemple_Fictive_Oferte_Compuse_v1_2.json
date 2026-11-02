@@ -1,0 +1,31 @@
+{
+  "purpose": "Exemple aritmetice și de selecție; date fictive, fără prețurile Excelului original. Nu este schema API a aplicației.",
+  "currency": "RON",
+  "vat": "not_modelled_in_these_examples",
+  "configuration_A": {
+    "name": "Echipament generic cu suport 12 luni",
+    "lines": [
+      {"key": "hardware", "kind": "main_product", "quantity_per_product": "1", "unit_price": "1000.00", "contributes": true},
+      {"key": "support", "kind": "service", "quantity_per_product": "1", "unit_price": "120.00", "duration_months": 12, "price_basis": "full_duration", "contributes": true},
+      {"key": "license", "kind": "license", "quantity_per_product": "1", "unit_price": "300.00", "duration_months": 36, "price_basis": "full_duration", "contributes": true},
+      {"key": "included_accessory", "kind": "accessory", "quantity_per_product": "2", "unit_price": "0.00", "contributes": true}
+    ]
+  },
+  "cases": [
+    {"id": "F01", "configuration": "A", "product_quantity": "1", "expected_net_before_vat": "1420.00"},
+    {"id": "F02", "configuration": "A", "product_quantity": "1", "support_price_override": "300.00", "support_months_override": 36, "expected_net_before_vat": "1600.00"},
+    {"id": "F03", "configuration": "A", "product_quantity": "1", "excluded_keys": ["support"], "expected_net_before_vat": "1300.00", "order_eligibility": "requires_separability_and_technical_confirmation"},
+    {"id": "F04", "configuration": "A", "product_quantity": "3", "freight_once": "50.00", "expected_net_before_vat": "4310.00", "expected_accessory_quantity": "6"},
+    {"id": "F05", "configuration": "A", "product_quantity": "3", "installation_once_per_lot": "200.00", "freight_once": "50.00", "expected_net_before_vat": "4510.00"},
+    {"id": "F06", "configuration": "A", "product_quantity": "1", "excluded_keys": ["included_accessory"], "expected_net_before_vat": "1420.00"},
+    {"id": "F07", "configuration": "A", "product_quantity": "1", "support_unit_monthly_price_override": "10.00", "support_months_override": 12, "support_price_basis_override": "per_month", "expected_net_before_vat": "1420.00"},
+    {"id": "F08", "configuration": "A", "product_quantity": "1", "minimum_order_net": "1500.00", "expected_net_before_vat": "1420.00", "expected_order_eligible": false},
+    {"id": "F09", "configuration": "A", "product_quantity": "1", "hardware_line_discount_percent": "10", "offer_discount_percent_on_lines_after_line_discount": "5", "freight_once": "50.00", "expected_net_before_vat": "1304.00"},
+    {"id": "F10", "type": "cart_comparison", "candidates": [{"key": "supplier_A", "goods": "1400.00", "freight_once": "100.00", "expected_total": "1500.00"}, {"key": "supplier_B", "goods": "1430.00", "freight_once": "0.00", "expected_total": "1430.00"}], "expected_lowest_complete_cart": "supplier_B"},
+    {"id": "F11", "type": "bundle_covering_multiple_requirements", "bundle_quantity": "1", "bundle_price": "1200.00", "covers": [{"requirement": "cabinet", "quantity": "1", "unit": "buc"}, {"requirement": "circuit", "quantity": "4", "unit": "buc"}], "freight_once": "50.00", "expected_net_before_vat": "1250.00"},
+    {"id": "F12", "type": "unknown_component_price", "hardware_price": "1000.00", "required_component_price": null, "expected_calculation_complete": false, "expected_recommended_as_complete": false},
+    {"id": "F13", "type": "shared_capacity", "capacity_products": "8", "allocation_A": "4", "allocation_B": "6", "expected_order_eligible": false},
+    {"id": "F14", "type": "service_coverage", "required_months": 36, "offered_months": 12, "confirmed_renewal_price": null, "expected_coverage_complete": false},
+    {"id": "F15", "type": "global_bundle_price", "global_price_contributes": "1000.00", "informational_hardware_value_not_additive": "700.00", "informational_accessories_value_not_additive": "300.00", "expected_net_before_vat": "1000.00"}
+  ]
+}
